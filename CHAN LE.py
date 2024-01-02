@@ -1,20 +1,24 @@
-def sum(n):
-    total=0
-    while n!=0:
-        total+=n%10
-        n//=10
-    return total%10==0
+def tinhTong(so):
+    tongChuSo=0
+    for chuSo in str(so):
+        tongChuSo+=int(chuSo)
+    return tongChuSo
+def kiemTraCachHaiDonVi(so):
+    str_so=str(so)
+    doDaiSo=len(str_so)
+    kiemTra=set()
+    for gtri in range(1,doDaiSo):
+        khoangCach=abs(int(str_so[gtri])-int(str_so[gtri-1]))
+        kiemTra.add(khoangCach)
+    if 2 in kiemTra:
+        return True
+    else:
+        return False
 
-def check(n):
-    str_n=str(n)
-    length=len(str_n)
-    for i in range(length-1):
-        if abs(int(str_n[i+1])-int(str_n[i]))!=2:
-            return False
-    return True
-
-if __name__=='__main__':
-    n=int(input())
-    for _ in range(n):
-        num=int(input())
-        print('YES') if sum(num) and check(n) else print('NO')
+slgtest=int(input())
+for _ in range(slgtest):
+    so=int(input())
+    if tinhTong(so)%10==0 and kiemTraCachHaiDonVi(so):
+        print('YES')
+    else:
+        print('NO')

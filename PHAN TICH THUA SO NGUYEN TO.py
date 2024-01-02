@@ -1,22 +1,32 @@
-from math import *
-def phantich(n):
-    if n!=1:
-        print('1 * ',end='')
-    else:
-        print(1)
-    for i in range(2,isqrt(n)+1):
-        mu=0
-        if n%i==0:
-            while n%i==0:
-                mu+=1
-                n//=i
-            print(i,mu,sep='^',end='')
-            if n!=1:
-                print(' * ',end='')
-    if n>1:
-        print(n,1,sep='^')
-if __name__=='__main__':
-    n=int(input())
-    for _ in range(n):
-        num=int(input())
-        phantich(num)
+def prime_factors(n):
+    factors = {}
+    i = 2
+    while i * i <= n:
+        while n % i == 0:
+            if i not in factors:
+                factors[i] = 0
+            factors[i] += 1
+            n //= i
+        i += 1
+
+    if n > 1:
+        factors[n] = 1
+
+    return factors
+
+
+def print_prime_factorization(n):
+    factors = prime_factors(n)
+    result = "1"
+    for factor, exponent in factors.items():
+        result += f" * {factor}^{exponent}"
+
+    print(result)
+
+
+if __name__ == "__main__":
+    T = int(input())
+
+    for _ in range(T):
+        N = int(input())
+        print_prime_factorization(N)
