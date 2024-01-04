@@ -1,5 +1,5 @@
 def kiemTraIp(ip):
-    thanhPhan=ip.split()
+    thanhPhan=ip.split('.')
     if len(thanhPhan)!=4:
         return False
     for con in thanhPhan:
