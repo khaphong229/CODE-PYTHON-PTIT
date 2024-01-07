@@ -9,6 +9,7 @@ def solve(n,a):
     for i in a:
         tong+=i
     return round((tong/len(a)),2)
+
 n=int(input())
 a=list(map(float,input().split()))
 print(solve(n,a))
