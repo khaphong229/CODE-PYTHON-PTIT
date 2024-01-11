@@ -3,7 +3,7 @@ def convert_the_base(n, b):
     temp = n
     while temp > 0:
         r=temp%b
-        if r>10:
+        if r>=10:
             ans+=str(chr(r+55))
         else:
             ans+=str(r)

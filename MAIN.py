@@ -1,18 +1,12 @@
-def convert_the_base(n, b):
-    ans = ''
-    temp = n
-    while temp > 0:
-        r=temp%b
-        if r>10:
-            ans+=str(chr(r+55))
-        else:
-            ans+=str(r)
-        temp//=b
-    print(''.join(reversed(ans)))
+def Try(s, n, a, b, c):
+    if len(s) == n and a > 0  and a <= b and b <= c:
+        print(s)
+    if len(s) < n:
+        Try(s + 'A', n, a + 1, b, c)
+        Try(s + 'B', n, a, b + 1, c)
+        Try(s + 'C', n, a, b, c + 1)
 
 
-if __name__=='__main__':
-    test=int(input())
-    for _ in range(test):
-        n,b=map(int,input().split())
-        convert_the_base(n,b)
+n = int(input())
+for i in range(3, n + 1):
+    Try('', i, 0, 0, 0)
