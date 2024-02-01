@@ -1,7 +1,12 @@
-n=input()
-a=[]
-for i in range(0,len(n)-1,2):
-    if n[i:(i+2)] not in a:
-        a.append(n[i:(i+2)])
-for i in sorted(a):
-    print(i,end=' ')
+from PIL import Image
+import pytesseract
+
+# Đọc ảnh từ đường dẫn file
+image_path = 'path/to/your/image.png'
+image = Image.open(image_path)
+
+# Sử dụng Tesseract OCR để trích xuất văn bản
+text = pytesseract.image_to_string(image)
+
+# In văn bản
+print(text)

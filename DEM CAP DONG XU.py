@@ -1,14 +1,15 @@
+from math import *
 n=int(input())
-a=[]
-for _ in range(n):
-    b=[str(i) for i in input()]
-    a.append(b)
-cnt=0
+hang=[0]*n; cot=[0]*n
+ans=0
 for i in range(n):
-    for j in range(n-1):
-        if a[i][j]==a[i][j+1]=='C':
-            cnt+=1
-        if a[j][i]==a[j+1][i]=='C':
-            cnt+=1
-
-print(cnt)
+    s=input()
+    for j in range(len(s)):
+        if s[j]=='C':
+            hang[i]+=1
+            cot[j]+=1
+for i in hang:
+    if i>=2: ans+=comb(i,2)
+for i in cot:
+    if i>=2: ans+=comb(i,2)
+print(ans)
